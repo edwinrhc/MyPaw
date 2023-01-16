@@ -108,18 +108,22 @@ const registrar = async (req, res) => {
   //Validacion
   await check("nombre")
     .notEmpty()
+    .isLength({ max: 20 })
     .withMessage("El nombre es Obligatorio")
     .run(req);
   await check("apellido_paterno")
     .notEmpty()
+    .isLength({ max: 50 })
     .withMessage("El apellido paterno es Obligatorio")
     .run(req);
   await check("apellido_materno")
     .notEmpty()
+    .isLength({ max: 50 })
     .withMessage("El apellido materno es Obligatorio")
     .run(req);
   await check("numero_contacto")
     .notEmpty()
+    .isLength({ max: 9 })
     .withMessage("El número  es Obligatorio")
     .run(req);
   await check("email")
