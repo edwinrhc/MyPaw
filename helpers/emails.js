@@ -22,7 +22,7 @@ const emailRegistro = async (datos) => {
             <p>Hola ${nombre}, comprueba tu cuenta en mypaw.com </p>
 
             <p>Tu cuenta ya esta lista, solo debes de confirmarla en el siguiente enlace:
-            <a href="containers-us-west-117.railway.app/auth/confirmar/${token}">Confirmar Cuenta</a></p>
+            <a href="https://mypaw-production.up.railway.app/auth/confirmar/${token}">Confirmar Cuenta</a></p>
 
 
          
