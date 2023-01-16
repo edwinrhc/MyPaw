@@ -1,0 +1,49 @@
+extends ../layout/admin
+
+block styles
+     link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
+
+
+block contenido
+   div.py-10
+      h1.text-4xl.my-10.font-extrabold.text-center My
+        span.font-normal Paw
+      h2.text-center.text-2xl.font-extrabold= pagina
+
+      
+      if errores 
+        div(class="max-w-md mx-auto my-10")
+            each error in errores 
+                p.bg-red-600.text-white.uppercase-text-xs.text-center.p-2.mb-1.fond-bold= error.msg
+
+
+      div(class="bg-white shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
+
+        form.space-y-8(method="POST")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            div.space-y-5
+                h3.text-lg.leading-6.font-medium.text-gray-900 Información
+                p.text-gray-600 Añade Información sobre la mascota
+                div
+                    label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="nombre") Nombre de la mascota
+                    input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Nombre" type="text" name="nombre" value=datos.nombre ? datos.nombre : '' )
+                div(class="md:w-1/2")
+                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="tipo_mascota") Tipo
+                        select#tipo_mascota.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(name="tipo_mascota")
+                            option(value="") - Selecione-
+                            each tipo_mascota in tipo_mascotas
+
+                                option(value=tipo_mascota.id selected= datos.tipomascotaId ? datos.tipomascotaId == tipo_mascota.id ? true : false : null)= tipo_mascota.nombre
+
+                                
+                div
+                    label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="raza") Raza
+                    input#raza.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Raza" type="text" name="raza" value=datos.raza ? datos.raza : '' )
+                div
+                    label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="edad") Edad
+                    input#edad.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Edad" type="text" name="edad" value=datos.edad ? datos.edad : '' )
+                div
+                    label(class="block text-sm uppercase text-gray-500 mb-3 font-bold" for="descripcion") Descripción
+                    textarea#descripcion.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Ingrese una breve descripción"  name="descripcion")= datos.descripcion ? datos.descripcion : ''
+
+                input(class="w-full bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-3 cursor-pointer" type="submit" value="Editar Mascota")

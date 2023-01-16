@@ -1,0 +1,13 @@
+header.bg-indigo-600.p-5
+    .container.mx-auto.flex.justify-between.items-center
+        a(href="/")
+            h1.text-2xl.text-white.font-extrabold.text-center My
+                span.font-normal Paw
+            
+        nav(class="my-5 text-sm md:flex md:items-center md:gap-3 font-bold text-white hidden")
+            a(href="/mis-servicios") Mis Servicios
+            a(href="/mis-mascotas") Mis Mascotas
+            //- a(href=`/auth/editar/${usuarioId}`) Mis Perfil
+            form(action="/auth/cerrar-sesion" method="POST")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                input( type="submit" class="bg-indigo-800 py-2 px-10 cursor-pointer" value="Cerrar Sesión") 

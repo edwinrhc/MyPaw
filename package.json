@@ -1,0 +1,51 @@
+{
+    "name": "reservamascota",
+    "version": "1.0.0",
+    "description": "Mi primer proyecto",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node index.js",
+        "server": "nodemon index.js",
+        "css": "postcss public/css/tailwind.css -o public/css/app.css --watch",
+        "js": "webpack --watch",
+        "dev": "concurrently \"npm run css\" \"npm run js\" ",
+        "db:importar": "node ./seed/seeder.js -i",
+        "db:eliminar": "node ./seed/seeder.js -e"
+    },
+    "keywords": [
+        "MVC",
+        "Pug",
+        "Tailwind",
+        "MySQL",
+        "Sequelize"
+    ],
+    "author": "Edwin Huamanttupa",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "cookie-parser": "^1.4.6",
+        "csurf": "^1.11.0",
+        "dotenv": "^16.0.2",
+        "dropzone": "^5.9.3",
+        "express": "^4.18.1",
+        "express-validator": "^6.14.2",
+        "jsonwebtoken": "^8.5.1",
+        "multer": "^1.4.5-lts.1",
+        "mysql2": "^2.3.3",
+        "nodemailer": "^6.7.8",
+        "pug": "^3.0.2",
+        "sequelize": "^6.23.1",
+        "sequelize-oracle": "^3.3.2-0.0"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.12",
+        "concurrently": "^7.4.0",
+        "nodemon": "^2.0.20",
+        "postcss": "^8.4.16",
+        "postcss-cli": "^10.0.0",
+        "tailwindcss": "^3.1.8",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^4.10.0"
+    }
+}

@@ -1,0 +1,41 @@
+extends ../layout/admin
+
+block styles
+     link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
+
+
+block contenido
+   div.py-10
+      a(href="/")
+        h1.text-4xl.my-10.font-extrabold.text-center My
+            span.font-normal Paw
+      h2.text-center.text-2xl.font-extrabold= pagina
+
+      if errores 
+        div(class="max-w-md mx-auto my-10")
+            each error in errores 
+                p.bg-red-600.text-white.uppercase-text-xs.text-center.p-2.mb-1.fond-bold= error.msg
+
+      .mt-8.mx-auto.max-w-md
+        .bg-white.py-8.px-4.shadow
+            form.space-y-5(method="POST")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                div
+                    label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="nombre") Tu Nombre
+                    input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Nombre" type="text" name="nombre" value= datos.nombre ? datos.nombre : '')
+                div
+                    label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="apellido_paterno") Tu Apellido Paterno
+                    input#apellido_paterno.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Apellido paterno" type="text" name="apellido_paterno" value= datos.apellido_paterno ? datos.apellido_paterno : '')
+                div
+                    label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="apellido_materno") Tu Apellido Materno
+                    input#apellido_materno.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Apellido materno" type="text" name="apellido_materno"  value= datos.apellido_materno ? datos.apellido_materno : '')
+                div
+                    label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="numero_contacto") Tu número de contacto
+                    input#numero_contacto.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Número de contacto" type="number" name="numero_contacto" readonly value= datos.numero_contacto ? datos.numero_contacto : '')
+                div
+                    label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="email") Tu Email
+                    input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Email" type="text" name="email" readonly value= datos.email ? datos.email :  '')
+    
+
+
+                input(class="w-full bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-3 cursor-pointer" type="submit" value="Editar Cuenta")
