@@ -21,13 +21,13 @@ block contenido
                     input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Nombre" type="text"  minlength="1" maxlength="20" name="nombre" value= usuario ? usuario.nombre : '')
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="apellido_paterno") Tu Apellido Paterno
-                    input#apellido_paterno.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Apellido paterno" type="text" name="apellido_paterno" minlength="1" maxlength="50"  value= usuario ? usuario.apellido_paterno : '')
+                    input#apellido_paterno.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Apellido paterno" type="text" name="apellido_paterno" minlength="1" maxlength="30"  value= usuario ? usuario.apellido_paterno : '')
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="apellido_materno") Tu Apellido Materno
-                    input#apellido_materno.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Apellido materno" type="text" name="apellido_materno" minlength="1" maxlength="50"  value= usuario ? usuario.apellido_materno : '')
+                    input#apellido_materno.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Apellido materno" type="text" name="apellido_materno" minlength="1" maxlength="30"  value= usuario ? usuario.apellido_materno : '')
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="numero_contacto") Tu número de contacto
-                    input#numero_contacto.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Número de contacto" type="number" name="numero_contacto" minlength="1" maxlength="9"  value= usuario ? usuario.numero_contacto : '')
+                    input#numero_contacto.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Número de contacto" type="number" name="numero_contacto"  max="9"  value= usuario ? usuario.numero_contacto : '')
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="email") Tu Email
                     input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Email" type="text" name="email"  maxlength="30"  value= usuario ? usuario.email :  '')
