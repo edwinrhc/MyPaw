@@ -19,10 +19,12 @@ const autenticar = async (req, res) => {
     await check('email')
     .isEmail()
     .withMessage('El email es Obligatorio')
+    .isLength({ max: 20 }).withMessage('El correo debe ser de máximo 20 caracteres')
     .run(req);
     await check('password')
     .isLength({ min: 6 })
     .withMessage('El Password es obligatorio')
+    .isLength({ max: 15 }).withMessage('El password debe ser de máximo 15 caracteres')
     .run(req);
 
     let resultado = validationResult(req)
@@ -107,36 +109,36 @@ const formularioRegistro = (req, res) => {
 const registrar = async (req, res) => {
   //Validacion
   await check("nombre")
-    .notEmpty()
-    .isLength({ max: 20 })
-    .withMessage("El nombre es Obligatorio")
+    .notEmpty().withMessage("El nombre es Obligatorio")
+    .isLength({ max: 20 }).withMessage('El nombre debe ser de máximo 20 caracteres')
     .run(req);
   await check("apellido_paterno")
-    .notEmpty()
-    .isLength({ max: 50 })
-    .withMessage("El apellido paterno es Obligatorio")
+    .notEmpty().withMessage("El apellido paterno es Obligatorio")
+  
+    .isLength({ max: 20 }).withMessage('El apellido paterno debe ser de máximo 20 caracteres')
     .run(req);
   await check("apellido_materno")
-    .notEmpty()
-    .isLength({ max: 50 })
-    .withMessage("El apellido materno es Obligatorio")
+    .notEmpty().withMessage("El apellido materno es Obligatorio")
+    .isLength({ max: 20 }).withMessage('El apellido materno debe ser de máximo 20 caracteres')
     .run(req);
   await check("numero_contacto")
-    .notEmpty()
-    .isLength({ max: 9 })
-    .withMessage("El número  es Obligatorio")
+    .notEmpty().withMessage("El número  es Obligatorio")
+    .isLength({ max: 15 }).withMessage('El número debe ser de máximo 15 caracteres')
     .run(req);
+
   await check("email")
-    .isEmail()
-    .withMessage("El email es Obligatorio")
+    .isEmail().withMessage("El email es Incorrecto")
+    .isLength({ max: 20 }).withMessage('El correo debe ser de máximo 20 caracteres')
     .run(req);
   await check("password")
-    .isLength({ min: 6 })
-    .withMessage("El password debe ser de al menos 6 caracteres")
+    .isLength({ min: 6 }).withMessage("El password debe ser de al menos 6 caracteres")
+    .isLength({ max: 15 }).withMessage('El password debe ser de máximo 15 caracteres')
     .run(req);
   await check("repetir_password")
     .equals(req.body.password)
     .withMessage("Los Passwords no son iguales")
+    .isLength({ min: 6 }).withMessage("El password debe ser de al menos 6 caracteres")
+    .isLength({ max: 15 }).withMessage('El password debe ser de máximo 15 caracteres')
     .run(req);
 
   let resultado = validationResult(req);
@@ -245,6 +247,7 @@ const resetPassword =  async (req, res) => {
     await check("email")
     .isEmail()
     .withMessage("Eso no parece un email")
+    .isLength({ max: 20 }).withMessage('El correo debe ser de máximo 20 caracteres')
     .run(req);
 
     let resultado = validationResult(req);
@@ -322,7 +325,14 @@ const nuevoPassword  = async (req, res) => {
     await check("password")
     .isLength({ min: 6 })
     .withMessage("El password debe ser de al menos 6 caracteres")
+    .isLength({ max: 15 }).withMessage('El password debe ser de máximo 15 caracteres')
     .run(req);
+    await check("repetir_password")
+    .equals(req.body.password)
+    .withMessage("Los Passwords no son iguales")
+    .isLength({ max: 15 }).withMessage('El repetir password debe ser de máximo 15 caracteres')
+    .run(req);
+
 
     let resultado = validationResult(req);
 
@@ -403,8 +413,8 @@ const guardarCambios = async (req, res) => {
     nombre,
     apellido_paterno,
     apellido_materno,
-    numero_contacto,
-    email
+    numero_contacto
+    
     } = req.body;
 
 
@@ -412,8 +422,8 @@ const guardarCambios = async (req, res) => {
     nombre,
     apellido_paterno,
     apellido_materno,
-    numero_contacto,
-    email
+    numero_contacto
+    
     });
 
 

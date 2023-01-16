@@ -8,13 +8,16 @@ const emailRegistro = async (datos) => {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
+    tls: {
+      rejectUnauthorized: false
+  }
   });
 
   const { email, nombre, token } = datos;
 
   // Enviar el email  (es interno de nodemailer)
   await transport.sendMail({
-    from: "mypaw.com",
+    from: "mypaw.com <ehuamanttupa@stfonavi.gob.pe>",
     to: email,
     subject: "Confirma tu Cuenta en mypaw.com",
     text: "Confirma tu Cuenta en mypaw.com",

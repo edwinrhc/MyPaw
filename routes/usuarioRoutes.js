@@ -35,13 +35,24 @@ router.post(
     protegerRuta,
     body("nombre")
         .notEmpty()
-        .withMessage("El Nombre es requerido"),
+        .withMessage("El Nombre es requerido")
+        .isLength({ max: 20 })
+        .withMessage('El nombre debe ser de máximo 20 caracteres'),
     body("apellido_paterno")
         .notEmpty()
-        .withMessage("El Apellido Paterno es requerido"),
+        .withMessage("El Apellido Paterno es requerido")
+        .isLength({ max: 20 })
+        .withMessage('El apellido paterno debe ser de máximo 20 caracteres'),
     body("apellido_materno")
         .notEmpty()
-        .withMessage("El Apellido Materno es requerido"),
+        .withMessage("El Apellido Materno es requerido")
+        .isLength({ max: 20 })
+        .withMessage('El apellido materno debe ser de máximo 20 caracteres'),
+    body("numero_contacto")
+        .notEmpty()
+        .withMessage("El número es requerido")
+        .isLength({ max: 15 })
+        .withMessage('El número debe ser de máximo 15 caracteres'),
     guardarCambios
 );
 
