@@ -27,7 +27,7 @@ block contenido
                     input#apellido_materno.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Apellido materno" type="text" name="apellido_materno" minlength="1" maxlength="30"  value= usuario ? usuario.apellido_materno : '')
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="numero_contacto") Tu número de contacto
-                    input#numero_contacto.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Número de contacto" type="number" name="numero_contacto"  max="9"  value= usuario ? usuario.numero_contacto : '')
+                    input#numero_contacto.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Número de contacto" type="number" name="numero_contacto"  pattern="\d*"  maxlength="9"  value= usuario ? usuario.numero_contacto : '')
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="email") Tu Email
                     input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Email" type="text" name="email"  maxlength="30"  value= usuario ? usuario.email :  '')
