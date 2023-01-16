@@ -22,15 +22,16 @@ const emailRegistro = async (datos) => {
             <p>Hola ${nombre}, comprueba tu cuenta en mypaw.com </p>
 
             <p>Tu cuenta ya esta lista, solo debes de confirmarla en el siguiente enlace:
-            <a href="${process.env.BACKEND_URL}:${
-      process.env.PORT ?? 3000
-    }/auth/confirmar/${token}">Confirmar Cuenta</a></p>
+            <a href="containers-us-west-117.railway.app/auth/confirmar/${token}">Confirmar Cuenta</a></p>
 
+
+         
             <p>Si tu no creaste esta cuenta, puedes ignorar el mensaje</p>
             `,
   });
 };
-
+// ${process.env.BACKEND_URL}:${ process.env.PORT ?? 3000}
+ 
 const emailOlvidePassword = async (datos) => {
     const transport = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
