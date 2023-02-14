@@ -31,7 +31,8 @@ block contenido
                     li
                         div(class="p-6 w-full flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-8 md:space-y-0 gap-4")
                           div(class="sm:w-1/4 md:w-1/6 lg:w-1/6")
-                              img(src=`uploads/${servicio.imagen}` alt=`Imagen propiedad ${servicio.titulo}` class="w-full block")
+                              a(href=`/servicios/agregar-imagen/${servicio.id}`)
+                                img(src=`uploads/${servicio.imagen}` alt=`Imagen propiedad ${servicio.titulo}` class="w-full block")
 
                           div(class="sm:w-2/4 md:w-3/6 lg:w-4/6 space-y-3")
                             a(class="block text-2xl font-extrabold text-indigo-600 truncate" href=`/servicio/${servicio.id}`)= servicio.titulo

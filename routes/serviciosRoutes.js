@@ -27,12 +27,15 @@ router.post(
     protegerRuta,
     body("titulo")
         .notEmpty()
-        .withMessage("El titulo del Servicio es obligatorio"),
+        .withMessage("El titulo del Servicio es obligatorio")
+        .isLength({ max: 80 }).withMessage('El titulo debe ser de máximo 80 caracteres')
+        .isAlphanumeric().withMessage('No se permite caracteres especiales en el titulo'),
     body("descripcion")
         .notEmpty()
         .withMessage("La descripción no puede ir vacía")
-        .isLength({ max: 500 })
-        .withMessage("La Descripcion es muy larga"),
+        .isLength({ max: 600 })
+        .withMessage("La Descripcion es muy larga")
+        .isAlphanumeric().withMessage('No se permite caracteres especiales en la descripción'),
     body("categoria").isNumeric().withMessage("Selecione una categoria"),
     body("precio").isNumeric().withMessage("Seleccione un rango de precio"),
     body("lat")
@@ -51,7 +54,6 @@ router.post(
 );
 
 router.get("/servicios/editar/:id", protegerRuta, editar);
-
 
 router.post(
     "/servicios/editar/:id",

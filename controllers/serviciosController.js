@@ -74,19 +74,19 @@ const admin = async (req, res) => {
 
 // Formulario para crear una nuevo servicio
 const crear = async (req, res) => {
-  // Modelo de precio y categoria
-  const [categorias, precios] = await Promise.all([
-    Categoria.findAll(),
-    Precio.findAll(),
-  ]);
+    // Modelo de precio y categoria
+    const [categorias, precios] = await Promise.all([
+      Categoria.findAll(),
+      Precio.findAll(),
+    ]);
 
-  res.render("servicios/crear", {
-    pagina: "Crear Servicio",
-    csrfToken: req.csrfToken(),
-    categorias: categorias,
-    precios: precios,
-    datos: {}
-  });
+    res.render("servicios/crear", {
+      pagina: "Crear Servicio",
+      csrfToken: req.csrfToken(),
+      categorias: categorias,
+      precios: precios,
+      datos: {}
+    });
 };
 
 const guardar = async (req, res) => {
@@ -139,11 +139,11 @@ const guardar = async (req, res) => {
       precioId,
       categoriaId,
       usuarioId,
-      imagen: "",
+      imagen:  "SinServicio.jpg"
     });
-
+ 
     const { id } = servicioGuardado;
-
+   
     res.redirect(`/servicios/agregar-imagen/${id}`);
   } catch (error) {
     console.log(error);
@@ -160,6 +160,7 @@ const agregarImagen = async (req, res) => {
   if (!servicio) {
     return res.redirect("/mis-servicios");
   }
+
 
   //Validar que la propiedad no este publicada
   console.log(req.usuario);
@@ -194,6 +195,7 @@ const almacenarImagen = async (req, res, next) => {
   console.log(req.usuario);
 
   if (servicio.publicado) {
+    // req.flash("error","Para modificar la imagen, primero debe de despublicar el servicio")
     return res.redirect("/mis-servicios");
   }
 
@@ -203,8 +205,7 @@ const almacenarImagen = async (req, res, next) => {
   }
 
   try {
-    console.log(req.file);
-
+   
     // Almacenar la imagen y publicar servicio
     servicio.imagen = req.file.filename;
     servicio.publicado = 1;
@@ -212,6 +213,7 @@ const almacenarImagen = async (req, res, next) => {
     await servicio.save();
 
     next();
+    
   } catch (error) {
     console.log(error);
   }
@@ -311,8 +313,8 @@ const guardarCambios = async (req, res) => {
     });
 
     await servicio.save();
-
-    res.redirect("/mis-servicios");
+   
+   res.redirect("/mis-servicios");
   } catch (error) {
     console.log(error);
   }
@@ -335,7 +337,10 @@ const eliminar = async(req, res) => {
   }
 
   // Eliminar la Imagen
-  await unlink(`public/uploads/${servicio.imagen}`)
+  if (servicio.imagen !== "SinServicio.jpg") {
+    await unlink(`public/uploads/${servicio.imagen}`)
+  }
+  // await unlink(`public/uploads/${servicio.imagen}`)
 
   console.log(`Se elimino la imagen ${servicio.imagen}`);
 
