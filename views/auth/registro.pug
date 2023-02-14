@@ -18,7 +18,7 @@ block contenido
                 input(type="hidden" name="_csrf" value=csrfToken)
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="nombre") Tu Nombre
-                    input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Nombre" type="text"  minlength="1" maxlength="20" name="nombre" value= usuario ? usuario.nombre : '')
+                    input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Nombre" type="text"  minlength="1" maxlength="100" name="nombre" value= usuario ? usuario.nombre : '')
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="apellido_paterno") Tu Apellido Paterno
                     input#apellido_paterno.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Apellido paterno" type="text" name="apellido_paterno" minlength="1" maxlength="100"  value= usuario ? usuario.apellido_paterno : '')

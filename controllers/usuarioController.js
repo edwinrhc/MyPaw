@@ -19,7 +19,7 @@ const autenticar = async (req, res) => {
     await check('email')
     .isEmail()
     .withMessage('El email es Obligatorio')
-    .isLength({ max: 20 }).withMessage('El correo debe ser de máximo 20 caracteres')
+    .isLength({ max: 100 }).withMessage('El correo debe ser de máximo 20 caracteres')
     .run(req);
     await check('password')
     .isLength({ min: 6 })
@@ -250,7 +250,7 @@ const resetPassword =  async (req, res) => {
     await check("email")
     .isEmail()
     .withMessage("Eso no parece un email")
-    .isLength({ max: 20 }).withMessage('El correo debe ser de máximo 20 caracteres')
+    .isLength({ max: 100 }).withMessage('El correo debe ser de máximo 100 caracteres')
     .run(req);
 
     let resultado = validationResult(req);
