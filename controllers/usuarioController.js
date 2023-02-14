@@ -110,17 +110,17 @@ const registrar = async (req, res) => {
   //Validacion
   await check("nombre")
     .notEmpty().withMessage("El nombre es Obligatorio")
-    .isLength({ max: 20 }).withMessage('El nombre debe ser de máximo 20 caracteres')
+    .isLength({ max: 100 }).withMessage('El nombre debe ser de máximo 20 caracteres')
     .isAlphanumeric().withMessage('No se permite caracteres especiales')
     .run(req);
   await check("apellido_paterno")
     .notEmpty().withMessage("El apellido paterno es Obligatorio")
-    .isLength({ max: 20 }).withMessage('El apellido paterno debe ser de máximo 20 caracteres')
+    .isLength({ max: 100 }).withMessage('El apellido paterno debe ser de máximo 20 caracteres')
     .isAlphanumeric().withMessage('No se permite caracteres especiales')
     .run(req);
   await check("apellido_materno")
     .notEmpty().withMessage("El apellido materno es Obligatorio")
-    .isLength({ max: 20 }).withMessage('El apellido materno debe ser de máximo 20 caracteres')
+    .isLength({ max: 100 }).withMessage('El apellido materno debe ser de máximo 20 caracteres')
     .isAlphanumeric().withMessage('No se permite caracteres especiales')
     .run(req);
   await check("numero_contacto")
@@ -131,7 +131,7 @@ const registrar = async (req, res) => {
 
   await check("email")
     .isEmail().withMessage("El email es Incorrecto")
-    .isLength({ max: 50 }).withMessage('El correo debe ser de máximo 20 caracteres')
+    .isLength({ max: 100 }).withMessage('El correo debe ser de máximo 20 caracteres')
     .run(req);
   await check("password")
     .isLength({ min: 6 }).withMessage("El password debe ser de al menos 6 caracteres")
