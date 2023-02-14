@@ -139,7 +139,7 @@ const guardar = async (req, res) => {
       precioId,
       categoriaId,
       usuarioId,
-      imagen:  "SinServicio.jpg"
+      imagen:  "Imagen01.jpg"
     });
  
     const { id } = servicioGuardado;
@@ -337,7 +337,7 @@ const eliminar = async(req, res) => {
   }
 
   // Eliminar la Imagen
-  if (servicio.imagen !== "SinServicio.jpg") {
+  if (servicio.imagen !== "Imagen01.jpg") {
     await unlink(`public/uploads/${servicio.imagen}`)
   }
   // await unlink(`public/uploads/${servicio.imagen}`)
