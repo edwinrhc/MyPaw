@@ -29,13 +29,13 @@ router.post(
         .notEmpty()
         .withMessage("El titulo del Servicio es obligatorio")
         .isLength({ max: 80 }).withMessage('El titulo debe ser de máximo 80 caracteres')
-        .isAlphanumeric().withMessage('No se permite caracteres especiales en el titulo'),
+        .matches(/^[a-zA-Z0-9\s]+$/).withMessage('No se permite caracteres especiales'),
     body("descripcion")
         .notEmpty()
         .withMessage("La descripción no puede ir vacía")
         .isLength({ max: 600 })
         .withMessage("La Descripcion es muy larga")
-        .isAlphanumeric().withMessage('No se permite caracteres especiales en la descripción'),
+        .matches(/^[a-zA-Z0-9\s]+$/).withMessage('No se permite caracteres especiales'),
     body("categoria").isNumeric().withMessage("Selecione una categoria"),
     body("precio").isNumeric().withMessage("Seleccione un rango de precio"),
     body("lat")
