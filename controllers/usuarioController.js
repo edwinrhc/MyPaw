@@ -126,7 +126,7 @@ const registrar = async (req, res) => {
   await check("numero_contacto")
     .notEmpty().withMessage("El número  es Obligatorio")
     .isLength({ max: 15 }).withMessage('El número debe ser de máximo 15 caracteres')
-    .matches(/^[a-zA-Z0-9\s]+$/).withMessage('No se permite caracteres especiales')
+    .isAlphanumeric().withMessage('No se permite caracteres especiales ni letras')
     .run(req);
 
   await check("email")
