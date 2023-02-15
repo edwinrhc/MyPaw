@@ -28,7 +28,7 @@ router.post(
     body("titulo")
         .notEmpty()
         .withMessage("El titulo del Servicio es obligatorio")
-        .isLength({ max: 80 }).withMessage('El titulo debe ser de máximo 80 caracteres')
+        .isLength({ max: 100 }).withMessage('El titulo debe ser de máximo 100 caracteres')
         .matches(/^[a-zA-Z0-9\s]+$/).withMessage('No se permite caracteres especiales'),
     body("descripcion")
         .notEmpty()
@@ -60,12 +60,15 @@ router.post(
     protegerRuta,
     body("titulo")
         .notEmpty()
-        .withMessage("El titulo del Servicio es obligatorio"),
+        .withMessage("El titulo del Servicio es obligatorio")
+        .isLength({ max: 100 }).withMessage('El titulo debe ser de máximo 100 caracteres')
+        .matches(/^[a-zA-Z0-9\s]+$/).withMessage('No se permite caracteres especiales'),
     body("descripcion")
         .notEmpty()
         .withMessage("La descripción no puede ir vacía")
-        .isLength({ max: 200 })
-        .withMessage("La Descripcion es muy larga"),
+        .isLength({ max: 600 })
+        .withMessage("La Descripcion es muy larga")
+        .matches(/^[a-zA-Z0-9\s]+$/).withMessage('No se permite caracteres especiales'),
     body("categoria").isNumeric().withMessage("Selecione una categoria"),
     body("precio").isNumeric().withMessage("Seleccione un rango de precio  "),
     body("lat")
