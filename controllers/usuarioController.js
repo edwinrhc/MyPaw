@@ -110,28 +110,30 @@ const registrar = async (req, res) => {
   //Validacion
   await check("nombre")
     .notEmpty().withMessage("El nombre es Obligatorio")
-    .isLength({ max: 100 }).withMessage('El nombre debe ser de máximo 20 caracteres')
-    .matches(/^[a-zA-Z0-9\s]+$/).withMessage('No se permite caracteres especiales')
+    .isLength({ max: 40 }).withMessage('El nombre debe ser de máximo 40 caracteres')
+    .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u).withMessage('No se permite caracteres especiales o números en el nombre')
     .run(req);
   await check("apellido_paterno")
     .notEmpty().withMessage("El apellido paterno es Obligatorio")
-    .isLength({ max: 100 }).withMessage('El apellido paterno debe ser de máximo 20 caracteres')
-    .matches(/^[a-zA-Z0-9\s]+$/).withMessage('No se permite caracteres especiales')
+    .isLength({ max: 40 }).withMessage('El apellido paterno debe ser de máximo 40 caracteres')
+    .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u).withMessage('No se permite caracteres especiales o números en el apellido paterno')
     .run(req);
   await check("apellido_materno")
     .notEmpty().withMessage("El apellido materno es Obligatorio")
-    .isLength({ max: 100 }).withMessage('El apellido materno debe ser de máximo 20 caracteres')
-    .matches(/^[a-zA-Z0-9\s]+$/).withMessage('No se permite caracteres especiales')
+    .isLength({ max: 40 }).withMessage('El apellido materno debe ser de máximo 40 caracteres')
+    .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u).withMessage('No se permite caracteres especiales o números en el apellido materno')
     .run(req);
   await check("numero_contacto")
     .notEmpty().withMessage("El número  es Obligatorio")
     .isLength({ max: 15 }).withMessage('El número debe ser de máximo 15 caracteres')
-    .isAlphanumeric().withMessage('No se permite caracteres especiales ni letras')
+    .isAlphanumeric().withMessage('No se permite caracteres especiales ni letras en el número')
+    .matches(/^(?!(\d)\1{3,}).*$/).withMessage("No se permiten números consecutivos iguales")
+    .not().matches(/^0+$/).withMessage('El número de teléfono no puede ser solo ceros')
     .run(req);
 
   await check("email")
     .isEmail().withMessage("El email es Incorrecto")
-    .isLength({ max: 100 }).withMessage('El correo debe ser de máximo 20 caracteres')
+    .isLength({ max: 50 }).withMessage('El correo debe ser de máximo 50 caracteres')
     .run(req);
   await check("password")
     .isLength({ min: 6 }).withMessage("El password debe ser de al menos 6 caracteres")

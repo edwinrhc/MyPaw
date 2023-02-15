@@ -25,7 +25,7 @@ const emailRegistro = async (datos) => {
             <p>Hola ${nombre}, comprueba tu cuenta en mypaw.com </p>
 
             <p>Tu cuenta ya esta lista, solo debes de confirmarla en el siguiente enlace:
-            <a href="${process.env.BACKEND_URL}/auth/confirmar/${token}">Confirmar Cuenta</a></p>
+            <a href="${process.env.BACKEND_URL}:${ process.env.PORT ?? 3000}/auth/confirmar/${token}">Confirmar Cuenta</a></p>
 
 
          
@@ -33,7 +33,8 @@ const emailRegistro = async (datos) => {
             `,
   });
 };
-// ${process.env.BACKEND_URL}:${ process.env.PORT ?? 3000}
+// ${process.env.BACKEND_URL} PRODUCCION
+//${process.env.BACKEND_URL}:${ process.env.PORT ?? 3000}
  
 const emailOlvidePassword = async (datos) => {
     const transport = nodemailer.createTransport({
@@ -58,12 +59,13 @@ const emailOlvidePassword = async (datos) => {
               <p>Hola ${nombre}, has solicitado reestablece tu password en mypaw.com </p>
   
               <p>Sigue en el siguiente enlace para generar un password nuevo:
-              <a href="${process.env.BACKEND_URL}/auth/olvide-password/${token}">Restablecer password</a></p>
+              <a href="${process.env.BACKEND_URL}:${ process.env.PORT ?? 3000}/auth/olvide-password/${token}">Restablecer password</a></p>
 
               <p>Si tu no solicitaste el cambio de password, puedes ignorar el mensaje</p>
               `,
     });
   };
+  // // ${process.env.BACKEND_URL} PRODUCCION 
   // ${process.env.BACKEND_URL}:${ process.env.PORT ?? 3000}
 export { 
     emailRegistro,

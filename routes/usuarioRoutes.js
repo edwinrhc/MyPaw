@@ -36,23 +36,28 @@ router.post(
     body("nombre")
         .notEmpty()
         .withMessage("El Nombre es requerido")
-        .isLength({ max: 20 })
-        .withMessage('El nombre debe ser de máximo 20 caracteres'),
+        .isLength({ max: 40 })
+        .withMessage('El nombre debe ser de máximo 40 caracteres')
+        .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u).withMessage('No se permite caracteres especiales'),
     body("apellido_paterno")
         .notEmpty()
         .withMessage("El Apellido Paterno es requerido")
-        .isLength({ max: 20 })
-        .withMessage('El apellido paterno debe ser de máximo 20 caracteres'),
+        .isLength({ max: 40 })
+        .withMessage('El apellido paterno debe ser de máximo 40 caracteres')
+        .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u).withMessage('No se permite caracteres especiales'),
     body("apellido_materno")
         .notEmpty()
         .withMessage("El Apellido Materno es requerido")
-        .isLength({ max: 20 })
-        .withMessage('El apellido materno debe ser de máximo 20 caracteres'),
+        .isLength({ max: 40 })
+        .withMessage('El apellido materno debe ser de máximo 40 caracteres')
+        .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u).withMessage('No se permite caracteres especiales'),
     body("numero_contacto")
         .notEmpty()
         .withMessage("El número es requerido")
-        .isLength({ max: 15 })
-        .withMessage('El número debe ser de máximo 15 caracteres'),
+        .isLength({ max: 15 }).withMessage('El número debe ser de máximo 15 caracteres')
+        .isAlphanumeric().withMessage('No se permite caracteres especiales ni letras')
+        .matches(/^(?!(\d)\1{3,}).*$/).withMessage("No se permiten números consecutivos iguales")
+        .not().matches(/^0+$/).withMessage('El número de teléfono no puede ser solo ceros'),
     guardarCambios
 );
 
