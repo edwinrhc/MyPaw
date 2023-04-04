@@ -36,18 +36,21 @@ router.post(
     body("nombre")
         .notEmpty()
         .withMessage("El Nombre es requerido")
+        .trim()
         .isLength({ max: 40 })
         .withMessage('El nombre debe ser de máximo 40 caracteres')
         .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u).withMessage('No se permite caracteres especiales'),
     body("apellido_paterno")
         .notEmpty()
         .withMessage("El Apellido Paterno es requerido")
+        .trim()
         .isLength({ max: 40 })
         .withMessage('El apellido paterno debe ser de máximo 40 caracteres')
         .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u).withMessage('No se permite caracteres especiales'),
     body("apellido_materno")
         .notEmpty()
         .withMessage("El Apellido Materno es requerido")
+        .trim()
         .isLength({ max: 40 })
         .withMessage('El apellido materno debe ser de máximo 40 caracteres')
         .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u).withMessage('No se permite caracteres especiales'),

@@ -110,16 +110,19 @@ const registrar = async (req, res) => {
   //Validacion
   await check("nombre")
     .notEmpty().withMessage("El nombre es Obligatorio")
+    .trim()
     .isLength({ max: 40 }).withMessage('El nombre debe ser de máximo 40 caracteres')
     .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u).withMessage('No se permite caracteres especiales o números en el nombre')
     .run(req);
   await check("apellido_paterno")
     .notEmpty().withMessage("El apellido paterno es Obligatorio")
+    .trim()
     .isLength({ max: 40 }).withMessage('El apellido paterno debe ser de máximo 40 caracteres')
     .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u).withMessage('No se permite caracteres especiales o números en el apellido paterno')
     .run(req);
   await check("apellido_materno")
     .notEmpty().withMessage("El apellido materno es Obligatorio")
+    .trim()
     .isLength({ max: 40 }).withMessage('El apellido materno debe ser de máximo 40 caracteres')
     .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u).withMessage('No se permite caracteres especiales o números en el apellido materno')
     .run(req);

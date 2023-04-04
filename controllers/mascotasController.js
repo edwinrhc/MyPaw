@@ -231,7 +231,7 @@ const guardarCambios = async (req, res) => {
   
       await mascota.save();
 
-      console.log(tipomascotaId + " animakl******************");
+      console.log(tipomascotaId + " animal******************");
   
       res.redirect("/mis-mascotas");
     } catch (error) {

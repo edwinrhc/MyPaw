@@ -41,7 +41,8 @@ const admin = async (req, res) => {
           { model: Categoria, as: "categoria" },
           { model: Precio, as: "precio" },
           { model: Mensaje, as: "mensajes"}
-        ],
+        ]
+      
       }),
       Servicios.count({
         where: {

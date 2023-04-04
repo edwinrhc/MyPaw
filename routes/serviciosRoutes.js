@@ -27,6 +27,7 @@ router.post(
     protegerRuta,
     body("titulo")
         .notEmpty()
+        .trim()
         .withMessage("El titulo del Servicio es obligatorio")
         .isLength({ max: 100 }).withMessage('El titulo debe ser de máximo 100 caracteres')
         .matches(/^[\w\sáéíóúÁÉÍÓÚñÑ,.;]+$/u).withMessage('No se permite caracteres especiales Titulo'),
@@ -35,7 +36,7 @@ router.post(
         .withMessage("La descripción no puede ir vacía")
         .isLength({ max: 600 })
         .withMessage("La Descripcion es muy larga")
-        .matches(/^[\w\sáéíóúÁÉÍÓÚñÑ,.;]+$/u).withMessage('No se permite caracteres especiales'),
+        .matches(/^[\w\sáéíóúÁÉÍÓÚñÑ,.;]+$/u).withMessage('No se permite caracteres especiales en la descripción'),
     body("categoria").isNumeric().withMessage("Selecione una categoria"),
     body("precio").isNumeric().withMessage("Seleccione un rango de precio"),
     body("lat")
@@ -60,11 +61,13 @@ router.post(
     protegerRuta,
     body("titulo")
         .notEmpty()
+        .trim()
         .withMessage("El titulo del Servicio es obligatorio")
         .isLength({ max: 100 }).withMessage('El titulo debe ser de máximo 100 caracteres')
-        .matches(/^[\w\sáéíóúÁÉÍÓÚñÑ,.;]+$/u).withMessage('No se permite caracteres especiales'),
+        .matches(/^[\w\sáéíóúÁÉÍÓÚñÑ,.;]+$/u).withMessage('No se permite caracteres especiales en el titulo'),
     body("descripcion")
         .notEmpty()
+        .trim()
         .withMessage("La descripción no puede ir vacía")
         .isLength({ max: 600 })
         .withMessage("La Descripcion es muy larga")
@@ -73,6 +76,7 @@ router.post(
     body("precio").isNumeric().withMessage("Seleccione un rango de precio  "),
     body("lat")
         .notEmpty()
+        .trim()
         .withMessage("Ubica la propiedad donde darás el servicio"),
     guardarCambios
 );
