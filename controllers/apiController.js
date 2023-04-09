@@ -7,6 +7,7 @@ const servicios = async (req, res) => {
             {model: Precio, as: 'precio'},
             {model: Categoria, as: 'categoria'},
         ]
+        
     })
 
     res.json(servicios)
