@@ -19,13 +19,13 @@ const emailRegistro = async (datos) => {
   await transport.sendMail({
     from: "mypaw.com <ehuamanttupa@stfonavi.gob.pe>",
     to: email,
-    subject: "Confirma tu Cuenta en mypaw.com",
+    subject: "Confirma tu Cuenta en MyPaw.com",
     text: "Confirma tu Cuenta en mypaw.com",
     html: `
             <p>Hola ${nombre}, comprueba tu cuenta en mypaw.com </p>
 
-            <p>Tu cuenta ya esta lista, solo debes de confirmarla en el siguiente enlace:
-            <a href="${process.env.BACKEND_URL}:${ process.env.PORT ?? 3000}/auth/confirmar/${token}">Confirmar Cuenta</a></p>
+            <p>Tu cuenta ya se encuentra lista, solo debes de confirmarla en el siguiente enlace:
+            <a href="${process.env.BACKEND_URL}/auth/confirmar/${token}">Confirmar Cuenta</a></p>
 
 
          
@@ -59,7 +59,7 @@ const emailOlvidePassword = async (datos) => {
               <p>Hola ${nombre}, has solicitado reestablece tu password en mypaw.com </p>
   
               <p>Sigue en el siguiente enlace para generar un password nuevo:
-              <a href="${process.env.BACKEND_URL}:${ process.env.PORT ?? 3000}/auth/olvide-password/${token}">Restablecer password</a></p>
+              <a href="${process.env.BACKEND_URL}/auth/olvide-password/${token}">Restablecer password</a></p>
 
               <p>Si tu no solicitaste el cambio de password, puedes ignorar el mensaje</p>
               `,
