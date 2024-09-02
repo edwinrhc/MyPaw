@@ -20,7 +20,7 @@
         "MySQL",
         "Sequelize"
     ],
-    "author": "Edwin Huamanttupa",
+    "author": "Edwin HC",
     "license": "ISC",
     "dependencies": {
         "bcryptjs": "^2.4.3",
